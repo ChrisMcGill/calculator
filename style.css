@@ -4,11 +4,15 @@ body{
 
 #calcScreen{
     height: 50px;
-    width: 250px;
+    width: 45%;
     background-color: #a2d2ff;
     border-color: black;
     border-style: solid;
     border-radius: 5%;
+    display: flex;
+    justify-content: right;
+    align-items:end;
+    margin-bottom: 5%;
 }
 
 #calcBody{
@@ -16,15 +20,24 @@ body{
     width: 45vw;
     background-color: #ffafcc;
     margin: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#calcButtons{
+    display: grid;
 }
 
 .calcButton{
-    display: grid;
     background-color: #a2d2ff;
-    border-radius: 50%;
+    border-radius: 25%;
 }
 
-
+#equalButton{
+    width: 200%;
+}
 
 
 
