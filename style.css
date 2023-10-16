@@ -24,6 +24,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 8%;
 }
 
 #calcButtons{
@@ -32,7 +33,7 @@ body{
 
 .calcButton{
     background-color: #a2d2ff;
-    border-radius: 25%;
+    border-radius: 12%;
 }
 
 #equalButton{
