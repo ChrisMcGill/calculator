@@ -1,39 +1,28 @@
 let digit = '';
 let digitStored = 0;
 let lastOperator = '';
+let calculation = [];
+let calculated = 0;
 
 const calcButton = document.querySelector('#calcButtons');
 calcButton.style.gridTemplateColumns = "repeat(4, 1fr)";
 calcButton.style.gridTemplateRows = "repeat(4, 1fr)";
 
-
+//reset functions - can be removed 
 function resetDigit(){
-    return digit = '';
+    digit = '';
 };
 function resetDigitStored(){
-    return digitStored = '';
+    digitStored = 0;
+};
+function resetCalculation(){
+    calculation = [];
+};
+function resetCalculated(){
+    calculated = 0;
 };
 
-function storeDigitAdd(){
-    return digitStored = Number(digit) + Number(`${digitStored}`);
-};
-//needs fix wrong sequence
-function storeDigitMinus(){
-    return digitStored = Number(digit) - Number(`${digitStored}`);
-};
-function storeDigitTimes(){
-    return digitStored = Number(digit) * Number(`${digitStored}`);
-};
-//needs fix divide by zero
-function storeDigitDivide(){
-    return digitStored = Number(digit) / Number(`${digitStored}`);
-};
-// each number can just be button
-// operators can be a fuction for each one
-// const to keep track of result?
-
-
-// display screen with updating function
+// display screen with updating function - currently constantly set to 0 so no use
 const calcScreen = document.querySelector('#calcScreen');
 calcScreen.textContent = (`${digit}`);
 
@@ -44,65 +33,93 @@ calcButtons.addEventListener('mouseup', () => {
 
 
 //number buttons
+// look in to way to parse element as number, will reduce all functions to 1
+// appendNumber(button.textContent)
 one.addEventListener('mousedown', () => {
-    return digit += 1;
+    calculation.push(1);
+    digit += 1;
 });
 two.addEventListener('mousedown', () => {
-    return digit += 2;
+    calculation.push(2);
+    digit += 2;
 });
 three.addEventListener('mousedown', () => {
-    return digit += 3;
+    calculation.push(3);
+    digit += 3;
 });
 four.addEventListener('mousedown', () => {
-    return digit += 4;
+    calculation.push(4);
+    digit += 4;
 });
 five.addEventListener('mousedown', () => {
-    return digit += 5;
+    calculation.push(5);
+    digit += 5;
 });
 six.addEventListener('mousedown', () => {
-    return digit += 6;
+    calculation.push(6);
+    digit += 6;
 });
 seven.addEventListener('mousedown', () => {
-    return digit += 7;
+    calculation.push(7);
+    digit += 7;
 });
 eight.addEventListener('mousedown', () => {
-    return digit += 8;
+    calculation.push(8);
+    digit += 8;
 });
 nine.addEventListener('mousedown', () => {
-    return digit += 9;
+    calculation.push(9);
+    digit += 9;
 });
 zero.addEventListener('mousedown', () => {
-    return digit += 0;
+    calculation.push(0);
+    digit += 0;
 });
 
-//plus function
+decimal.addEventListener('mousedown', () => {
+    calculation.push('.');
+    digit += '.';
+});
+// start.addEventListener('mousedown', () => {
+//     calculation.push('(');
+//     digit += '(';
+// });
+// finish.addEventListener('mousedown', () => {
+//     calculation.push(')');
+//     digit += ')';
+// });    work just using finish button for other function atm
+
+
+finish.addEventListener('mousedown', () => {
+    console.log(calculation);
+}); 
+
 // store digit on screen as number
 //display it on top of screen digit stored
-//reset let digit to 0
 
 plus.addEventListener('mousedown', () =>{
-    storeDigitAdd();
+    calculation.push(' + ');
     resetDigit();
     console.log(digit);
     console.log(digitStored);
     return lastOperater = '+';
 });
 times.addEventListener('mousedown', () =>{
-    storeDigitTimes();
+    calculation.push(' * ');
     resetDigit();
     console.log(digit);
     console.log(digitStored);
     return lastOperater = '*';
 });
 divide.addEventListener('mousedown', () =>{
-    storeDigitDivide();
+    calculation.push(' / ');
     resetDigit();
     console.log(digit);
     console.log(digitStored);
     return lastOperater = '/';
 });
 minus.addEventListener('mousedown', () =>{
-    storeDigitMinus();
+    calculation.push(' - ');
     resetDigit();
     console.log(digit);
     console.log(digitStored);
@@ -110,32 +127,34 @@ minus.addEventListener('mousedown', () =>{
 });
 //only displays on mousedown, sets to 0 on mouse up atm
 equalButton.addEventListener('mousedown', () =>{
-    if (lastOperator === '+'){
-        storeDigitAdd();
-    } else if (lastOperator === '*'){
-        storeDigitTimes();
-    } else if (lastOperator === '/'){
-        storeDigitDivide();
-    } else if (lastOperator === '-'){
-        storeDigitMinus();
-    } else {
-        return;
-    };
-    resetDigit();
-    console.log(digit);
-    console.log(digitStored);
-    calcScreen.textContent = (`${digitStored}`);
+    calculated = (calculation.join(''));
+    console.log(calculated);
 });
 
 clear.addEventListener('mousedown', () => {
     resetDigit();
     resetDigitStored();
+    resetCalculation();
+    resetCalculated();
     console.log(digit);
     console.log(digitStored);
 });
 
 
+// if + - / * return else loops thorugh array to return up top, also break on length
+//set max numbers on screen by rounding if.length> certain amount
 
-//make object that takes in every input
-//= will return every item as string, remove the "" so it can be run as an operation
-// make function that if same key pressed, they keep number going eg 7 7 = 77 not 7,7
+// function storeDigitAdd(){
+//     return digitStored = Number(digit) + Number(`${digitStored}`);
+// };
+// //needs fix wrong sequence
+// function storeDigitMinus(){
+//     return digitStored = Number(digit) - Number(`${digitStored}`);
+// };
+// function storeDigitTimes(){
+//     return digitStored = Number(digit) * Number(`${digitStored}`);
+// };
+// //needs fix divide by zero
+// function storeDigitDivide(){
+//     return digitStored = Number(digit) / Number(`${digitStored}`);
+// };
