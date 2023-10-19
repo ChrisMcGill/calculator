@@ -4,10 +4,6 @@ let lastOperator = '';
 let calculation = [];
 let calculated = 0;
 
-const calcButton = document.querySelector('#calcButtons');
-calcButton.style.gridTemplateColumns = "repeat(4, 1fr)";
-calcButton.style.gridTemplateRows = "repeat(4, 1fr)";
-
 //reset functions - can be removed 
 function resetDigit(){
     digit = '';
@@ -23,10 +19,10 @@ function resetCalculated(){
 };
 
 // display screen with updating function - currently constantly set to 0 so no use
-const calcScreen = document.querySelector('#calcScreen');
+const calcScreen = document.querySelector('#current');
 calcScreen.textContent = (`${digit}`);
 
-const calcButtons = document.querySelector('#calcButtons');
+const calcButtons = document.querySelector('#calcBody');
 calcButtons.addEventListener('mouseup', () => {
     calcScreen.textContent = (`${digit}`);
 });
